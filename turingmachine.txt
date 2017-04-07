@@ -45,15 +45,15 @@
   ;State d0, drop our zero and shift other stuff
     d0 _ a r s    ;Drop zero in empty spot 
     d0 a * r *    ;Too far left  
-    d0 b a r h1   ;Drop zero and carry things
-    d0 c a r h2
-    d0 d a r h3
-    d0 e a r h4
-    d0 f a r h5
-    d0 g a r h6
-    d0 h a r h7
-    d0 i a r h8
-    d0 j a r h9
+    d0 b a r d1   ;Drop zero and carry things
+    d0 c a r d2
+    d0 d a r d3
+    d0 e a r d4
+    d0 f a r d5
+    d0 g a r d6
+    d0 h a r d7
+    d0 i a r d8
+    d0 j a r d9
 
   ;State h1, holding a one
     h1 a * r d1   ;Passed sorted ones  
@@ -64,14 +64,14 @@
   ;State d1, drop our one and shift other stuff
     d1 _ b r s    ;Drop one in empty spot 
     d1 b * r *    ;Too far left  
-    d1 c b r h2   ;Drop one and carry things
-    d1 d b r h3
-    d1 e b r h4
-    d1 f b r h5
-    d1 g b r h6
-    d1 h b r h7
-    d1 i b r h8
-    d1 j b r h9
+    d1 c b r d2   ;Drop one and carry things
+    d1 d b r d3
+    d1 e b r d4
+    d1 f b r d5
+    d1 g b r d6
+    d1 h b r d7
+    d1 i b r d8
+    d1 j b r d9
 
   ;State h2, holding a two
     h2 a * r d2   ;Passed sorted twos  
@@ -83,13 +83,13 @@
   ;State d2, drop our two and shift other stuff
     d2 _ c r s    ;Drop two in empty spot 
     d2 c * r *    ;Too far left  
-    d2 d c r h3   ;Drop two and carry things
-    d2 e c r h4
-    d2 f c r h5
-    d2 g c r h6
-    d2 h c r h7
-    d2 i c r h8
-    d2 j c r h9
+    d2 d c r d3   ;Drop two and carry things
+    d2 e c r d4
+    d2 f c r d5
+    d2 g c r d6
+    d2 h c r d7
+    d2 i c r d8
+    d2 j c r d9
 
   ;State h3, holding a three
     h3 a * r d3   ;Passed sorted threes  
@@ -102,12 +102,12 @@
   ;State d3, drop our three and shift other stuff
     d3 _ d r s    ;Drop three in empty spot 
     d3 d * r *    ;Too far left  
-    d3 e d r h4   ;Drop three and carry things
-    d3 f d r h5
-    d3 g d r h6
-    d3 h d r h7
-    d3 i d r h8
-    d3 j d r h9
+    d3 e d r d4   ;Drop three and carry things
+    d3 f d r d5
+    d3 g d r d6
+    d3 h d r d7
+    d3 i d r d8
+    d3 j d r d9
 
   ;State h4, holding a four
     h4 a * r d4   ;Passed sorted fours  
@@ -121,11 +121,11 @@
   ;State d4, drop our four and shift other stuff
     d4 _ e r s    ;Drop four in empty spot 
     d4 e * r *    ;Too far left  
-    d4 f e r h5   ;Drop four and carry things
-    d4 g e r h6
-    d4 h e r h7
-    d4 i e r h8
-    d4 j e r h9
+    d4 f e r d5   ;Drop four and carry things
+    d4 g e r d6
+    d4 h e r d7
+    d4 i e r d8
+    d4 j e r d9
 
   ;State h5, holding a five
     h5 a * r d5   ;Passed sorted fives  
@@ -140,10 +140,10 @@
   ;State d5, drop our five and shift other stuff
     d5 _ f r s    ;Drop five in empty spot 
     d5 f * r *    ;Too far left
-    d5 g f r h6   ;Drop five and carry things
-    d5 h f r h7
-    d5 i f r h8
-    d5 j f r h9
+    d5 g f r d6   ;Drop five and carry things
+    d5 h f r d7
+    d5 i f r d8
+    d5 j f r d9
 
   ;State h6, holding a six
     h6 a * r d6   ;Passed sorted sixes 
@@ -159,9 +159,9 @@
   ;State d6, drop our six and shift other stuff
     d6 _ g r s    ;Drop six in empty spot 
     d6 g * r *    ;Too far left  
-    d6 h g r h7   ;Drop six and carry things
-    d6 i g r h8
-    d6 j g r h9
+    d6 h g r d7   ;Drop six and carry things
+    d6 i g r d8
+    d6 j g r d9
 
   ;State h7, holding a seven
     h7 a * r d7   ;Passed sorted sevens 
@@ -178,8 +178,8 @@
   ;State d7, drop our seven and shift other stuff
     d7 _ h r s    ;Drop seven in empty spot 
     d7 h * r *    ;Too far left 
-    d7 i h r h8   ;Drop seven and carry things
-    d7 j h r h9
+    d7 i h r d8   ;Drop seven and carry things
+    d7 j h r d9
 
   ;State h8, holding an eight
     h8 a * r d8   ;Passed sorted eights 
@@ -197,7 +197,7 @@
   ;State d8, drop our eight and shift other stuff
     d8 _ i r s    ;Drop eight in empty spot 
     d8 i * r *    ;Too far left 
-    d8 j i r h9   ;Drop eight and carry things
+    d8 j i r d9   ;Drop eight and carry things
 
   ;State h9, holding a nine
     h9 a * r d9   ;Passed sorted nines 
