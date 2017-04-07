@@ -1,0 +1,218 @@
+ ;Turing machine insertion sort 
+   
+  ;State 0, create sorted portion of list
+    0 0 a r s     ;0->a, move to sorting state
+    0 1 b r s     ;1->b, move to sorting state
+    0 2 c r s     ;2->c
+    0 3 d r s     ;3->d
+    0 4 e r s     ;4->e
+    0 5 f r s     ;5->f
+    0 6 g r s     ;6->g
+    0 7 h r s     ;7->h
+    0 8 i r s     ;8->i
+    0 9 j r s     ;9->j
+    0 a 0 l *     ;Done sorting, fix alphabet
+    0 b 1 l *     ;Done sorting, fix alphabet
+    0 c 2 l *     ;Done sorting, fix alphabet
+    0 d 3 l *     ;Done sorting, fix alphabet
+    0 e 4 l *     ;Done sorting, fix alphabet
+    0 f 5 l *     ;Done sorting, fix alphabet
+    0 g 6 l *     ;Done sorting, fix alphabet
+    0 h 7 l *     ;Done sorting, fix alphabet
+    0 i 8 l *     ;Done sorting, fix alphabet
+    0 j 9 l *     ;Done sorting, fix alphabet
+    0 * * r halt  ;End of program  
+   
+  ;State s, sorting state
+    s 0 _ l h0    ;Picked up a zero
+    s 1 _ l h1    ;Picked up a one
+    s 2 _ l h2    ;Picked up a two
+    s 3 _ l h3    ;Picked up a three
+    s 4 _ l h4    ;Picked up a four
+    s 5 _ l h5    ;Picked up a five
+    s 6 _ l h6    ;Picked up a six
+    s 7 _ l h7    ;Picked up a seven
+    s 8 _ l h8    ;Picked up a eight
+    s 9 _ l h9    ;Picked up a nine
+    s * * l 0     ;Done sorting  
+   
+   
+  ;State h0, holding a zero
+    h0 a * r d0   ;Found sorted zeroes  
+    h0 _ * r d0   ;Found space  
+    h0 * * l *    ;Seeking start of sorted zeroes
+   
+  ;State d0, drop our zero and shift other stuff
+    d0 _ a r s    ;Drop zero in empty spot 
+    d0 a * r *    ;Too far left  
+    d0 b a r h1   ;Drop zero and carry things
+    d0 c a r h2
+    d0 d a r h3
+    d0 e a r h4
+    d0 f a r h5
+    d0 g a r h6
+    d0 h a r h7
+    d0 i a r h8
+    d0 j a r h9
+
+  ;State h1, holding a one
+    h1 a * r d1   ;Passed sorted ones  
+    h1 b * r d1   ;Found sorted ones  
+    h1 _ * r d1   ;Found space  
+    h1 * * l *    ;Seeking start of sorted ones
+   
+  ;State d1, drop our one and shift other stuff
+    d1 _ b r s    ;Drop one in empty spot 
+    d1 b * r *    ;Too far left  
+    d1 c b r h2   ;Drop one and carry things
+    d1 d b r h3
+    d1 e b r h4
+    d1 f b r h5
+    d1 g b r h6
+    d1 h b r h7
+    d1 i b r h8
+    d1 j b r h9
+
+  ;State h2, holding a two
+    h2 a * r d2   ;Passed sorted twos  
+    h2 b * r d2   ;Passed sorted twos  
+    h2 c * r d2   ;Found sorted twos  
+    h2 _ * r d2   ;Found space  
+    h2 * * l *    ;Seeking start of sorted twos
+   
+  ;State d2, drop our two and shift other stuff
+    d2 _ c r s    ;Drop two in empty spot 
+    d2 c * r *    ;Too far left  
+    d2 d c r h3   ;Drop two and carry things
+    d2 e c r h4
+    d2 f c r h5
+    d2 g c r h6
+    d2 h c r h7
+    d2 i c r h8
+    d2 j c r h9
+
+  ;State h3, holding a three
+    h3 a * r d3   ;Passed sorted threes  
+    h3 b * r d3   ;Passed sorted threes  
+    h3 c * r d3   ;Passed sorted threes  
+    h3 d * r d3   ;Found sorted threes  
+    h3 _ * r d3   ;Found space  
+    h3 * * l *    ;Seeking start of sorted threes
+   
+  ;State d3, drop our three and shift other stuff
+    d3 _ d r s    ;Drop three in empty spot 
+    d3 d * r *    ;Too far left  
+    d3 e d r h4   ;Drop three and carry things
+    d3 f d r h5
+    d3 g d r h6
+    d3 h d r h7
+    d3 i d r h8
+    d3 j d r h9
+
+  ;State h4, holding a four
+    h4 a * r d4   ;Passed sorted fours  
+    h4 b * r d4   ;Passed sorted fours  
+    h4 c * r d4   ;Passed sorted fours  
+    h4 d * r d4   ;Passed sorted fours  
+    h4 e * r d4   ;Found sorted fours  
+    h4 _ * r d4   ;Found space  
+    h4 * * l *    ;Seeking start of sorted fours
+   
+  ;State d4, drop our four and shift other stuff
+    d4 _ e r s    ;Drop four in empty spot 
+    d4 e * r *    ;Too far left  
+    d4 f e r h5   ;Drop four and carry things
+    d4 g e r h6
+    d4 h e r h7
+    d4 i e r h8
+    d4 j e r h9
+
+  ;State h5, holding a five
+    h5 a * r d5   ;Passed sorted fives  
+    h5 b * r d5   ;Passed sorted fives  
+    h5 c * r d5   ;Passed sorted fives  
+    h5 d * r d5   ;Passed sorted fives  
+    h5 e * r d5   ;Passed sorted fives  
+    h5 f * r d5   ;Found sorted fives  
+    h5 _ * r d5   ;Found space  
+    h5 * * l *    ;Seeking start of sorted fives
+   
+  ;State d5, drop our five and shift other stuff
+    d5 _ f r s    ;Drop five in empty spot 
+    d5 f * r *    ;Too far left
+    d5 g f r h6   ;Drop five and carry things
+    d5 h f r h7
+    d5 i f r h8
+    d5 j f r h9
+
+  ;State h6, holding a six
+    h6 a * r d6   ;Passed sorted sixes 
+    h6 b * r d6   ;Passed sorted sixes  
+    h6 c * r d6   ;Passed sorted sixes  
+    h6 d * r d6   ;Passed sorted sixes  
+    h6 e * r d6   ;Passed sorted sixes  
+    h6 f * r d6   ;Passed sorted sixes  
+    h6 g * r d6   ;Found sorted sixes  
+    h6 _ * r d6   ;Found space  
+    h6 * * l *    ;Seeking start of sorted sixes
+   
+  ;State d6, drop our six and shift other stuff
+    d6 _ g r s    ;Drop six in empty spot 
+    d6 g * r *    ;Too far left  
+    d6 h g r h7   ;Drop six and carry things
+    d6 i g r h8
+    d6 j g r h9
+
+  ;State h7, holding a seven
+    h7 a * r d7   ;Passed sorted sevens 
+    h7 b * r d7   ;Passed sorted sevens  
+    h7 c * r d7   ;Passed sorted sevens  
+    h7 d * r d7   ;Passed sorted sevens 
+    h7 e * r d7   ;Passed sorted sevens 
+    h7 f * r d7   ;Passed sorted sevens 
+    h7 g * r d7   ;Passed sorted sevens 
+    h7 h * r d7   ;Found sorted sevens 
+    h7 _ * r d7   ;Found space  
+    h7 * * l *    ;Seeking start of sorted sevens
+   
+  ;State d7, drop our seven and shift other stuff
+    d7 _ h r s    ;Drop seven in empty spot 
+    d7 h * r *    ;Too far left 
+    d7 i h r h8   ;Drop seven and carry things
+    d7 j h r h9
+
+  ;State h8, holding an eight
+    h8 a * r d8   ;Passed sorted eights 
+    h8 b * r d8   ;Passed sorted eights  
+    h8 c * r d8   ;Passed sorted eights  
+    h8 d * r d8   ;Passed sorted eights 
+    h8 e * r d8   ;Passed sorted eights 
+    h8 f * r d8   ;Passed sorted eights 
+    h8 g * r d8   ;Passed sorted eights 
+    h8 h * r d8   ;Passed sorted eights 
+    h8 i * r d8   ;Found sorted eights 
+    h8 _ * r d8   ;Found space  
+    h8 * * l *    ;Seeking start of sorted eights
+   
+  ;State d8, drop our eight and shift other stuff
+    d8 _ i r s    ;Drop eight in empty spot 
+    d8 i * r *    ;Too far left 
+    d8 j i r h9   ;Drop eight and carry things
+
+  ;State h9, holding a nine
+    h9 a * r d9   ;Passed sorted nines 
+    h9 b * r d9   ;Passed sorted nines  
+    h9 c * r d9   ;Passed sorted nines  
+    h9 d * r d9   ;Passed sorted nines 
+    h9 e * r d9   ;Passed sorted nines 
+    h9 f * r d9   ;Passed sorted nines 
+    h9 g * r d9   ;Passed sorted nines 
+    h9 h * r d9   ;Passed sorted nines 
+    h9 i * r d9   ;Passed sorted nines 
+    h9 j * * d9   ;Found sorted nines 
+    h9 _ * r d9   ;Found space  
+    h9 * * l *    ;Seeking start of sorted nines
+   
+  ;State d9, drop our eight and shift other stuff
+    d9 _ j r s    ;Drop nine in empty spot 
+    d9 j * r *    ;Too far left 
